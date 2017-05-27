@@ -1,0 +1,49 @@
+<DOCTYPE html>
+<html>
+	<head>
+		<title>Noah Herrin</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+	</head>
+	<body>
+
+	<section class="Clock">
+		<p id="CLOCK"><i></i></p>
+	</section>
+
+	<section class="Description"></section>
+
+	<script>
+		var now = new Date();
+		var sum = now.getHours()/2.4 + now.getMinutes()/144 + now.getSeconds()/8640;
+		var Hour = Math.floor(sum);
+		sum = (sum-Hour)*100;
+		var Minute = Math.floor(sum);
+		console.log(sum);
+		sum = (sum-Minute)*100;
+		var Second = Math.round(sum);
+
+		//update Clock
+		setInterval(function() {
+			Second++;
+			if(Second>=100) {
+				Second -=100;
+				Minute +=1;
+				if(Minute>=100) {
+					Minute -=100;
+					Hour +=1;
+
+				}
+			}
+			var displayHour = Hour;
+			var displayMinute = Minute;
+			if(Minute<10) {displayMinute="0"+Minute;}
+			var displaySecond = Second;
+			if(Second<10) {displaySecond="0"+Second;}
+			document.getElementById("CLOCK").innerHTML = displayHour+":" +displayMinute+":"+displaySecond;
+			
+			},865);
+	</script>
+	</body>
+</html>
